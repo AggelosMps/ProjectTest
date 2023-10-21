@@ -6,4 +6,8 @@ public class ProjectTest {
     public int Ath(){
         return 69;
     }
+    public String Zaza(){
+        return "Eimai kaif";
+    }
+    
 }
