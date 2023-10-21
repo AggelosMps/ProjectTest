@@ -9,5 +9,8 @@ public class ProjectTest {
     public String Zaza(){
         return "Eimai kaif";
     }
+    public String kategida(){
+        return "ta dakria sou kategida";
+            }
     
 }
