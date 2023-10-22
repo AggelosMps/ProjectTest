@@ -9,6 +9,10 @@ public class ProjectTest {
     public String Zaza(){
         return "Eimai kaif";
     }
+
+    public static void getNikos() {
+        System.out.println("Καλησπέρα στην Ομάδα")
+    }
    
     
 }
