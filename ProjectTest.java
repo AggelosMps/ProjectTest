@@ -12,10 +12,10 @@ public class ProjectTest {
 
     public static void getNikos() {
         System.out.println("German tourists oso zw mazwi");
-    }
+   }
 
     public static void epitelousmphkaapocommandline() {
-        System.out.println("Νο1 project");
+        System.out.println("PAMEEEE LIGO");
     }
 
    
