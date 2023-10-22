@@ -9,10 +9,9 @@ public class ProjectTest {
     public String Zaza(){
         return "Eimai kaif";
     }
-<<<<<<< HEAD
 
     public static void getNikos() {
-        System.out.println("Καλησπέρα στην Ομάδα")
+        System.out.println("German tourists oso zw mazwi");
     }
 
     public static void epitelousmphkaapocommandline() {
@@ -21,12 +20,10 @@ public class ProjectTest {
 
    
     
-=======
     public String kategida(){
         return "ta dakria sou kategida";
             }
-    public void Test() {
-	    System.out.println("test");
+    public void KostaoKavlas() {
+	    System.out.println("Kostas");
     }        
->>>>>>> 5f791affb0a046c71bdf9eaffe343c4cbe5b501e
 }
