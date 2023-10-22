@@ -20,10 +20,11 @@ public class ProjectTest {
 
    
     
-    public String kategida(){
-        return "ta dakria sou kategida";
+    public String Loco(){
+        return "pita soublaki tzatziki kai tmax";
             }
     public void KostaoKavlas() {
 	    System.out.println("Kostas");
     }        
+
 }
