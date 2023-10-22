@@ -4,7 +4,7 @@ public class ProjectTest {
     }
 
     public int Ath(){
-        return 68;
+        return 69;
     }
     public String Zaza(){
         return "Eimai kaif";
@@ -25,5 +25,8 @@ public class ProjectTest {
             }
     public void KostaoKavlas() {
 	    System.out.println("Kostas");
-    }        
+    }    
+    public static void spinellis() {
+        System.out.println("POU DIPSANE GIA ....");
+    }    
 }
