@@ -12,7 +12,7 @@ public class ProjectTest {
 <<<<<<< HEAD
 
     public static void getNikos() {
-        System.out.println("Καλησπέρα στην Ομάδα")
+        System.out.println("German tourists oso zw mazwi");
     }
 
     public static void epitelousmphkaapocommandline() {
