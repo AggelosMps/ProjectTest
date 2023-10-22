@@ -27,6 +27,6 @@ public class ProjectTest {
 	    System.out.println("Kostas");
     }    
     public static void spinellis() {
-        System.out.println("POU DIPSANE GIA ....");
+        System.out.println("POU DIPSANE GIA ...");
     }    
 }
