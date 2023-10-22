@@ -13,6 +13,6 @@ public class ProjectTest {
         return "ta dakria sou kategida";
             }
     public void Test() {
-	    System.out.println("test");
+	    System.out.println("Test");
     }        
 }
