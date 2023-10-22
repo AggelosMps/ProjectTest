@@ -23,7 +23,7 @@ public class ProjectTest {
     public String kategida(){
         return "ta dakria sou kategida";
             }
-    public void Mazonakis() {
-	    System.out.println("Mazo");
+    public void KostaoKavlas() {
+	    System.out.println("Kostas");
     }        
 }
