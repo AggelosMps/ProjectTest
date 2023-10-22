@@ -9,10 +9,24 @@ public class ProjectTest {
     public String Zaza(){
         return "Eimai kaif";
     }
+<<<<<<< HEAD
+
+    public static void getNikos() {
+        System.out.println("German tourists oso zw mazwi");
+    }
+
+    public static void epitelousmphkaapocommandline() {
+        System.out.println("Νο1 project");
+    }
+
+   
+    
+=======
     public String kategida(){
         return "ta dakria sou kategida";
             }
     public void Test() {
 	    System.out.println("Test");
     }        
+>>>>>>> 5f791affb0a046c71bdf9eaffe343c4cbe5b501e
 }
