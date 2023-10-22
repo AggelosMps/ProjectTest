@@ -4,7 +4,7 @@ public class ProjectTest {
     }
 
     public int Ath(){
-        return 69;
+        return 68;
     }
     public String Zaza(){
         return "Eimai kaif";
