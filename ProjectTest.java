@@ -12,5 +12,7 @@ public class ProjectTest {
     public String kategida(){
         return "ta dakria sou kategida";
             }
-            
+    public void Test() {
+	    System.out.println("test");
+    }        
 }
