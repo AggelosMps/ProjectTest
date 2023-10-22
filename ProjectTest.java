@@ -13,6 +13,11 @@ public class ProjectTest {
     public static void getNikos() {
         System.out.println("Καλησπέρα στην Ομάδα")
     }
+
+    public static void epitelousmphkaapocommandline() {
+        System.out.println("Νο1 project");
+    }
+
    
     
 }
