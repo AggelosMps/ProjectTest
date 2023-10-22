@@ -18,6 +18,10 @@ public class ProjectTest {
         System.out.println("PAMEEEE LIGO");
     }
 
+    public static void getKOK() {
+        System.out.println("edhcuhe");
+    }
+
    
     
     public String Loco(){
