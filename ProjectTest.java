@@ -29,5 +29,8 @@ public class ProjectTest {
             }
     public void KostaoKavlas() {
 	    System.out.println("Kostas");
-    }        
+    }
+    public static void hello() {
+        System.out.println("Hello");
+    } 
 }
