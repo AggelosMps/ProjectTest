@@ -1,31 +1,54 @@
+import java.util.Scanner;
 public class ProjectTest {
     public static void main(String[] args) {
-        System.out.println("This is a test");
-    }
+        Scanner scanner = new Scanner(System.in);
+        ProfileManager profileManager = new ProfileManager();
+        boolean successful_login=false;
+        while (!successful_login) {
+            System.out.println("1. Log in");
+            System.out.println("2. Register");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
 
-    public int Ath(){
-        return 69;
-    }
-    public String Zaza(){
-        return "Eimai kaif";
-    }
+            if (choice == 1) {
+                System.out.print("Enter username: ");
+                String username = scanner.nextLine();
+                System.out.print("Enter password: ");
+                String password = scanner.nextLine();
 
-    public static void getNikos() {
-        System.out.println("Καλησπέρα στην Ομάδα")
-    }
-
-    public static void epitelousmphkaapocommandline() {
-        System.out.println("Νο1 project");
-    }
-  
-    public String kategida(){
-        return "ta dakria sou kategida";
+                if (profileManager.authenticate(username, password)) {
+                    System.out.println("Login successful!");
+                    successful_login=true;
+                    // Proceed with the application logic for the logged-in manager.
+                } else {
+                    System.out.println("Login failed. Incorrect username or password.");
+                }
+            } else if (choice == 2) {
+                System.out.print("Enter a new username: ");
+                String username = scanner.nextLine();
+                if (profileManager.managerExists(username)) {
+                    System.out.println("Username already taken. Please choose another.");
+                } else {
+                    System.out.print("Enter a password: ");
+                    String password = scanner.nextLine();
+                    ManagerData newProfile = new ManagerData(username, password);
+                    profileManager.addProfile(newProfile);
+                    System.out.println("Registration successful! You can now log in.");
+                }
+            } else if (choice == 3) {
+                System.out.println("Exiting the application.");
+                break;
+            } else {
+                System.out.println("Invalid choice. Please select a valid option.");
             }
-    public void Test() {
-	    System.out.println("test");
-    }       
+        }
+        System.out.println(profileManager.profiles.get(0).getUsername());
+        System.out.println("1) Give me an income");
+        Double income= scanner.nextDouble();
+        profileManager.profiles.get(0).SetIncome(income);
+        System.out.println(profileManager.profiles.get(0).getIncome());
 
-    public static void giatonKosta() {
-            System.out.println("Kosta fere mia garidomakaronada kai se mena");
     }
 }
