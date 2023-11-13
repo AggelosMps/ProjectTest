@@ -9,7 +9,6 @@ public class OpenAIChatRequest {
     public static void main(String[] args) {
         String apiKey = "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";
 
-        // Replace the URL with the correct OpenAI API endpoint
         String apiUrl = "https://api.openai.com/v1/chat/completions";
 
         // Replace with your model name
