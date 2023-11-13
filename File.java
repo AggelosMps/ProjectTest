@@ -9,8 +9,7 @@ public class File {
 
         String[] names = {"Vasilis","Dimitris","Aggelos","Kostas","Stratos","Mpampis","Nikos"};
 
-        //Μπορείς το αρχείο που δημιουργείς να το βάλεις και σε φάκελο ως εξής: C:\\Users\\nickkantzaris\\Applications\\Programming
-
+        
         System.out.println("Give your username");
         String username = sc.nextLine();
         System.out.println("Give your password");
