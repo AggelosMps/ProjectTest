@@ -1,0 +1,140 @@
+//ΔΗΜΙΟΥΡΓΙΑ ΕΝΟΣ ΑΡΧΕΙΟΥ EXCEL ΓΙΑ ΤΗΝ ΑΠΟΘΗΚΕΥΣΗ ΔΕΔΟΜΕΝΩΝ, ΚΛΑΣΗ 1
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class ExcelWriter {
+    public static void main(String[] args) {
+        // Create a new workbook
+        Workbook workbook = new XSSFWorkbook();
+
+        // Create a sheet in the workbook
+        Sheet sheet = workbook.createSheet("Sheet1");
+
+        // Create a row and add data to it
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Name");
+        headerRow.createCell(1).setCellValue("Age");
+        headerRow.createCell(2).setCellValue("City");
+
+        Row dataRow = sheet.createRow(1);
+        dataRow.createCell(0).setCellValue("John Doe");
+        dataRow.createCell(1).setCellValue(25);
+        dataRow.createCell(2).setCellValue("New York");
+
+        // Save the workbook to a file
+        try (FileOutputStream fileOut = new FileOutputStream("example.xlsx")) {
+            workbook.write(fileOut);
+            System.out.println("Excel file created successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+// ΕΠΕΞΕΡΓΑΣΙΑ ΔΕΔΟΜΕΝΩΝ ΣΕ ΣΥΓΚΕΚΡΙΜΕΝΟ ΚΕΛΙ, ΚΛΑΣΗ 2
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class ExcelModifier {
+    public static void main(String[] args) {
+        // βαζεις το path του αρχειου που εχουμε ηδη
+        String filePath = "example.xlsx";
+
+        try (FileInputStream fileIn = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
+
+            // διαλεγεις συγκεκριμενα ποιο sheet θες
+            Sheet sheet = workbook.getSheet("Sheet1");
+
+            // δηλωνεις στηλη και γραμμη που θες να αλλαξεις
+            int rowIndex = 1;  // Row index (0-based)
+            int columnIndex = 1;  // Column index (0-based)
+
+            // Get the row and cell objects
+            Row row = sheet.getRow(rowIndex);
+            Cell cell = row.getCell(columnIndex);
+
+            // αλλαζεις το κελι που θες
+            cell.setCellValue(30);  // Update the age to 30
+
+            // Save the modified workbook to a new file
+            try (FileOutputStream fileOut = new FileOutputStream("modified_example.xlsx")) {
+                workbook.write(fileOut);
+                System.out.println("Excel file modified successfully!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+//ΠΩΣ ΕΜΦΑΝΙΖΩ ΤΟ ΚΕΛΙ ΠΟΥ ΘΕΛΩ ΑΠΟ ΤΟ EXCEL, ΚΛΑΣΗ 3
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ExcelReader {
+    public static void main(String[] args) {
+        // Specify the path to your existing Excel file
+        String filePath = "example.xlsx";
+
+        try (FileInputStream fileIn = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fileIn)) {
+
+            // Get the sheet you want to read
+            Sheet sheet = workbook.getSheet("Sheet1");
+
+            // Specify the row and column index of the cell you want to retrieve
+            int rowIndex = 1;  // Row index (0-based)
+            int columnIndex = 1;  // Column index (0-based)
+
+            // Get the row and cell objects
+            Row row = sheet.getRow(rowIndex);
+            Cell cell = row.getCell(columnIndex);
+
+            // Retrieve the content of the cell
+            if (cell != null) {
+                switch (cell.getCellType()) {
+                    case STRING:
+                        System.out.println("Cell Value (String): " + cell.getStringCellValue());
+                        break;
+                    case NUMERIC:
+                        System.out.println("Cell Value (Numeric): " + cell.getNumericCellValue());
+                        break;
+                    case BOOLEAN:
+                        System.out.println("Cell Value (Boolean): " + cell.getBooleanCellValue());
+                        break;
+                    case FORMULA:
+                        System.out.println("Cell Value (Formula): " + cell.getCellFormula());
+                        break;
+                    default:
+                        System.out.println("Cell Value: " + cell.toString());
+                }
+            } else {
+                System.out.println("Cell is empty");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
