@@ -8,33 +8,39 @@ public class Main {
         try {
             // Connect to the SQLite database (creates the database if it doesn't exist)
             connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
-            
+
             // Create a table to store revenue data
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Revenue (id INTEGER PRIMARY KEY, amount REAL, date TEXT)");
-            
-            // Insert revenue data into the table
-            double revenueAmount = 2000.00; // Sample revenue amount
-            String date = "2023-12-16"; // Sample date
-            
-            /*PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Revenue (amount, date) VALUES (?, ?)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Revenue (id INTEGER PRIMARY KEY, amount REAL, date TEXT, age INT)");
+
+            //Insert revenue data into the table
+            double revenueAmount = 840.00; // Sample revenue amount
+            String date = "2023-04-20"; // Sample date
+            int age = 25;
+
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Revenue (amount, date, age) VALUES (?, ?, ?)");
             insertStatement.setDouble(1, revenueAmount);
             insertStatement.setString(2, date);
+            insertStatement.setInt(3, age);
             insertStatement.executeUpdate();
-            
-            */System.out.println("Revenue data added successfully!");
-            
+
+            //PreparedStatement pS = connection.prepareStatement("UPDATE Revenue SET amount = ? WHERE id = ?");
+            //pS.setDouble(1, 888.00);
+            //pS.setInt(2, 6);
+            //pS.executeUpdate();
+
+            System.out.println("Revenue data added successfully!");
+
             // Retrieve and display the saved revenue data
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Revenue WHERE amount=2000");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Revenue");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 double amount = resultSet.getDouble("amount");
                 String revenueDate = resultSet.getString("date");
-                System.out.println("ID: " + id + ", Amount: " + amount + ", Date: " + revenueDate);
+                int hlikia = resultSet.getInt("age");
+                System.out.println("ID: " + id + ", Amount: " + amount + ", Date: " + revenueDate + ", Age: " + hlikia);
             }
-            //statement.executeQuery("SELECT amount FROM Revenue WHERE amount=5000")
 
-            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
