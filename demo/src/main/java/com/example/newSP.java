@@ -1,0 +1,22 @@
+package com.retail;\\Αλλαγή του πακέτου
+import com.retail.*;\\Αλλαγή οτυ πακέτου και αλλαγή μίας μεθόδου αυτή τπυ άγγελου
+
+public class SuperMarket {
+    public static void main(String[] args) {
+        boolean successful_login=false;
+        while (!successful_login) {
+            int choice = MethodsUser.menu();
+            if (choice == 1) {
+                Options.choice1();
+            } else if (choice == 2) { 
+                Options.choice2();
+            } else if (choice == 3) {
+                successful_login = true;
+                Options.choice3();
+                break;
+            } else {
+                System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+}
