@@ -1,8 +1,7 @@
-package com.retail; //Αλλαγή του πακέτου
+package com.example
 
 import java.util.Scanner;
-import com.retail.*;//Αλλαγή με βάση το δικό μας πακέτο
-
+import com.example.*;
 public class MethodsUser {
     public static Scanner scanner = new Scanner(System.in);
     public static String nameUser() {

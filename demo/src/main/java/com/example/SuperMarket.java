@@ -1,7 +1,7 @@
 package com.example;
 
 import java.util.Scanner;
-import com.retail.UseDB;
+import com.example.UseDB;
 
 public class SuperMarket {
     public static void main(String[] args) {

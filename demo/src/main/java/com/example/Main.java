@@ -7,7 +7,7 @@ public class Main {
         Connection connection = null;
         try {
             // Connect to the SQLite database (creates the database if it doesn't exist)
-            connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
 
             // Create a table to store revenue data
             Statement statement = connection.createStatement();
@@ -18,13 +18,13 @@ public class Main {
             String date = "2023-04-20"; // Sample date
             int age = 25;
 
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Revenue (amount, date, age) VALUES (?, ?, ?)");
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Manager (amount, date, age) VALUES (?, ?, ?)");
             insertStatement.setDouble(1, revenueAmount);
             insertStatement.setString(2, date);
             insertStatement.setInt(3, age);
             insertStatement.executeUpdate();
 
-            //PreparedStatement pS = connection.prepareStatement("UPDATE Revenue SET amount = ? WHERE id = ?");
+            //PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET amount = ? WHERE id = ?");
             //pS.setDouble(1, 888.00);
             //pS.setInt(2, 6);
             //pS.executeUpdate();
@@ -32,7 +32,7 @@ public class Main {
             System.out.println("Revenue data added successfully!");
 
             // Retrieve and display the saved revenue data
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Revenue");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Manager");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 double amount = resultSet.getDouble("amount");

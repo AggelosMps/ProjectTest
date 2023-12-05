@@ -1,5 +1,5 @@
-package com.retail;\\Αλλαγή του πακέτου
-import com.retail.*;\\Αλλαγή οτυ πακέτου και αλλαγή μίας μεθόδου αυτή τπυ άγγελου
+package com.example;
+import com.example.*;
 
 public class SuperMarket {
     public static void main(String[] args) {

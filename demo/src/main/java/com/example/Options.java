@@ -1,5 +1,5 @@
-package com.retail;\\Αλλαγή του πακέτου 
-import com.retail.*;\\Αλλαγή για το πακέτο μας
+package com.example; 
+import com.example.*;
 
 public class Options {
     public static void choice1() {
