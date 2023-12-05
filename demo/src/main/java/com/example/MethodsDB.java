@@ -1,5 +1,4 @@
-package com.retail; //Να βάλει κάποιος το δικό μας πακέτο
-
+package com.example; 
 import java.sql.*;
 
 public class MethodsDB {
