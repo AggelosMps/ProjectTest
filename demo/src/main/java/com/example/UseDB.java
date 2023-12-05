@@ -1,4 +1,4 @@
-package com.examplel;
+package com.example;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -14,7 +14,7 @@ public class UseDB {
     public static boolean usernameExist(String usernameToCheck) {
         boolean y = false;
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT username FROM Manager");
             while (resultSet.next()) {
@@ -35,7 +35,7 @@ public class UseDB {
 
     public static boolean authenticateUser(String usernameToCheck, String passwordToCheck) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             boolean truename = false;
             boolean truepassword = false;
@@ -69,34 +69,35 @@ public class UseDB {
 
     public static void syndeshxrhsthprotifora(String username) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(username  + "timeslogin.txt"));
-            writer.write("0");
-            writer.close();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(username  + "timeslogin.txt"));
+        writer.write("0");
+        writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void elegxossyndesis(String username) {
-        try { 
-            BufferedReader reader = new BufferedReader(new FileReader(username + "timeslogin.txt"));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(username + "temp.txt"));
-
-            // Διαβάστε την πρώτη γραμμή και ενημερώστε την
-            String firstLine = reader.readLine();
-
-            // Εγγράψτε την ενημερωμένη πρώτη γραμμή στο νέο αρχείο
-            writer.write("1");
-            writer.newLine();  
-            writer.close();
-
+        try {
+            File file = new File(username + "timeslogin.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+    
+            // Read the existing content
+            String line = reader.readLine();
+            reader.close();
+    
+            // Update the content
+            if (line != null && line.equals("0")) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                writer.write("1");
+                writer.close();
+                System.out.println("File content updated successfully.");
+            } else {
+                System.out.println("File content was not updated. Current content may not be '0'.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-     File oldFile = new File(username + "timeslogin.txt");
-     File newFile = new File(username +"temp.txt"); 
-    newFile.renameTo(oldFile);
     }
 
     public static int checkfores(String username) {
@@ -114,7 +115,7 @@ public class UseDB {
     public static void createTableBD(String username, String password) {
         try {
             // Connect to the SQLite database (creates the database if it doesn't exist)
-            connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS Manager (username VARCHAR(40) PRIMARY KEY, password VARCHAR(40), ap_1 INT)");
 
@@ -147,7 +148,7 @@ public class UseDB {
 
     public static void insertIntoDB(double apothemata,String username) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:revenue_data.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET ap_1 = ? WHERE username = ?");
             pS.setDouble(1, apothemata);
@@ -158,9 +159,26 @@ public class UseDB {
         }
 
     }
+    public static Number selectFromTable(String username, String apantisi) {
+    try {
+        connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT " + apantisi + " FROM Manager WHERE username = " + "'" + username + "'");
+        if (resultSet.next()) {
+            if (resultSet.getObject(apantisi) instanceof Integer) {
+                return resultSet.getInt(apantisi);
+            } else if (resultSet.getObject(apantisi) instanceof Double) {
+                return resultSet.getDouble(apantisi);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0;
+}
 
     public static void main(String[] args) {
-        System.out.println(usernameExist("Nikos"));
+        Number result = selectFromTable("Agg", "ap_1");
+        System.out.println(result);
     }
-    
 }
