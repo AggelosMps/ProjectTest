@@ -28,6 +28,6 @@ public class Options {
         }
     }
     public static void choice3() {
-        System.out.println("Login failed.Incorrect username or password.");
+        System.out.println("Exit the program.");
     }
 }
