@@ -14,7 +14,9 @@ public class SuperMarket {
                 successful_login = true;
                 Options.choice3();
                 break;
-            } else {
+            } else if (choice == 4) {
+                System.out.println("Τhe diagrammatic representation of the data is as follows");
+                
                 System.out.println("Invalid choice. Please select a valid option.");
             }
         }
