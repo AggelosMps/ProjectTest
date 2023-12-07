@@ -49,6 +49,10 @@ public class MethodsUser {
         System.out.println("Δώσε οικονομικά αποτελέσματα");
         double financial = scanner.nextDouble();
         MethodsDB.insertApantisi3intoDB(financial, username);
+        BarChartFX.main(null);
+        PieChartFX.main(null);
+        AreaChart.main(null);
+        LineChart.main(null);
     }
     public static void newuser(String username, String password) {
         UseDB.syndeshxrhsthprotifora(username);
