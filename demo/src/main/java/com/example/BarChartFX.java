@@ -6,7 +6,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
  
-public class Main extends Application {
+public class BarChartFX extends Application {
     final static String prod1 = "Αυγά";
     final static String prod2 = "Μήλα";
     final static String prod3 = "Γάλα";

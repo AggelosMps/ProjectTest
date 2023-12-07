@@ -1,7 +1,7 @@
 package com.example;
 import com.example.*;
 
-public class SuperMarket {
+public class newSP {
     public static void main(String[] args) {
         boolean successful_login=false;
         while (!successful_login) {

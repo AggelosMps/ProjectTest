@@ -6,7 +6,7 @@ public class MethodsDB {
 
     public static void insertApantisi1intoDB(int apothemata,String username) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");\\Αλλαγή ονόματος βάσης
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET ap_1 = ? WHERE username = ?");
             pS.setInt(1, apothemata);
@@ -19,7 +19,7 @@ public class MethodsDB {
 
     public static void insertApantisi2intoDB(double timologisi,String username) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");\\Αλλαγή ονόματος βάσης
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET ap_2 = ? WHERE username = ?");
             pS.setDouble(1, timologisi);
@@ -33,7 +33,7 @@ public class MethodsDB {
 
     public static void insertApantisi3intoDB(double oikonomikaapotelesmata,String username) {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");\\Αλλαγή ονόματος βάσης
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
             PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET ap_3 = ? WHERE username = ?");
             pS.setDouble(1, oikonomikaapotelesmata);
