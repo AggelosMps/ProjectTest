@@ -6,7 +6,7 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
  
  
-public class LC extends Application {
+public class LineChart extends Application {
  
     @Override public void start(Stage stage) {
         stage.setTitle("Line Chart Sample");
