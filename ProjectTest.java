@@ -61,6 +61,9 @@ public class ProjectTest {
        // System.out.println(profileManager.profiles.get(0).getIncome());//Επιστρέφει το εισόδημα του χρήστη
 
     }
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 }
