@@ -63,7 +63,7 @@ public class MethodsUser {
             int operating_days = scanner.nextInt();
             if (operating_days > 0) {
                 y = false;
-                UseDB.insertIntoDBInt("operaring_days", operating_days, username);
+                UseDB.insertIntoDBInt("operating_days", operating_days, username);
             } else {
                 System.out.println("Λάθος καταχώρηση, παρακαλώ προσπαθήστε ξανά");
             }
