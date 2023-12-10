@@ -112,12 +112,12 @@ public class UseDB {
         }
     }
 
-    public static void createTableBD(String username, String password) {
+    public static void createTableDB(String username, String password) {
         try {
             // Connect to the SQLite database (creates the database if it doesn't exist)
             connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Manager (username VARCHAR(40) PRIMARY KEY, password VARCHAR(40), ap_1 INT)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS Manager (username VARCHAR(40) PRIMARY KEY, password VARCHAR(40), operating_days INT, Store_Opening_Time VARCHAR(20), Store_Closing_Time VARCHAR(20), employees INT, product_name VARCHAR(40), pr_now INT, pr_yesterday INT, pr_db_yesterday INT, price DOUBLE, pr_cost DOUBLE)");
 
             PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO Manager (username, password) VALUES (?, ?)");
             insertStatement.setString(1, username);
@@ -146,24 +146,47 @@ public class UseDB {
         }
     }
 
-    public static void insertIntoDB(double apothemata,String username) {
+    public static void insertIntoDBDouble(String column, double value,String username) {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
             Statement statement = connection.createStatement();
-            PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET ap_1 = ? WHERE username = ?");
-            pS.setDouble(1, apothemata);
+            PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET "+ column +" = ? WHERE username = ?");
+            pS.setDouble(1, value);
             pS.setString(2, username);
             pS.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-    public static Number selectFromTable(String username, String apantisi) {
+    public static void insertIntoDBString(String column, String value,String username) {
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
+            Statement statement = connection.createStatement();
+            PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET "+ column +" = ? WHERE username = ?");
+            pS.setString(1, value);
+            pS.setString(2, username);
+            pS.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void insertIntoDBInt(String column, int value, String username) {
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
+            Statement statement = connection.createStatement();
+            PreparedStatement pS = connection.prepareStatement("UPDATE Manager SET "+ column +" = ? WHERE username = ?");
+            pS.setInt(1, value);
+            pS.setString(2, username);
+            pS.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static Number selectFromTableNumber(String username, String apantisi) {
     try {
         connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT " + apantisi + " FROM Manager WHERE username = " + "'" + username + "'");
+        ResultSet resultSet = statement.executeQuery("SELECT " + apantisi + " FROM Manager WHERE username = " + "'" + username + "'");         //Warning may cause error in the Diagrams!!!
         if (resultSet.next()) {
             if (resultSet.getObject(apantisi) instanceof Integer) {
                 return resultSet.getInt(apantisi);
@@ -176,13 +199,17 @@ public class UseDB {
     }
     return 0;
 }
-
-    public static void main(String[] args) {
-        Number result = selectFromTable("Agg", "ap_1");
-        System.out.println(result);
+public static String selectFromTableString(String username, String apantisi) {
+    try {
+        connection = DriverManager.getConnection("jdbc:sqlite:Manager_data.db");
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT " + apantisi + " FROM Manager WHERE username = " + "'" + username + "'");
+        if (resultSet.next()) {
+            return resultSet.getString(apantisi);   
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
-<<<<<<< HEAD
+    return null;
 }
-=======
 }
->>>>>>> 6785b7ac5ae5018c31d3362fc5d39789d05d7284
