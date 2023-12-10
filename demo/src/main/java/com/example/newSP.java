@@ -14,9 +14,7 @@ public class newSP {
                 successful_login = true;
                 Options.choice3();
                 break;
-            } else if (choice == 4) {
-                System.out.println("Τhe diagrammatic representation of the data is as follows");
-                
+            } else {
                 System.out.println("Invalid choice. Please select a valid option.");
             }
         }
