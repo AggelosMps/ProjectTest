@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import com.example.*;
 public class MethodsUser {
@@ -23,39 +24,90 @@ public class MethodsUser {
         scanner.nextLine();
         return answer;
     }
-    public static void question1(String username) {
+    public static void epilogesMenu() {
+        boolean flag = true;
+        int answer = 0;
+        while (flag) {    
+            System.out.println("Σε ποιόν τομέα θέλετε να σας εξυπηρετήσουμε;");
+            System.out.println("1. Αποθέματα (Σας προτείνει το προιόν που πρέπει να αγοράσετε για να μεγιστοποιήσετε το κέρδος σας, βάση των πωλήσεων που έχετε κάνει τις προηγούμενες 3 μέρες.)");
+            System.out.println("2. Τιμολόγηση (Σας προτείνει την καλύτερη τιμή για να μεγιστοποιήσετε το κέρδος σας, βάση των πωλήσεων που έχετε κάνει τις προηγούμενες 3 μέρες.)");
+            System.out.println("3. Πρόγραμμα προσωπικού (Ωρολόγιο πρόγραμμα προσωπικού.)");
+            System.out.println("4. Οικονομικές καταστάσεις (Έσοδα, Έξοδα, Κέρδη επιχείρησης, έχοντας την επιλογή και για διαγραμματική αναπαράσταση.)");
+            try {
+                answer = scanner.nextInt();
+                if (answer >= 0 && answer <=4) {
+                    flag = false;
+                } else {
+                    System.out.println("Παρακαλούμε επιλέξτε ένα απο τα ακόλουθα.");
+                }    
+            } catch (InputMismatchException e) {
+                System.out.println("Παρακαλούμε επιλέξτε ένα απο τα ακόλουθα.");
+            }
+        }
+        epilogesDiadikasia(answer);   
+    }
+    public static void insertdata(String username) {
+        insertOperating_days(username);
+        insertStore_Opening_Time(username);
+        insertStore_Closing_Time(username);
+
+        //synexeia
+
+
+
+    }
+    public static void insertOperating_days(String username) {
         boolean y = true;
         while (y) {
-            System.out.println("Δώσε αποθέματα");
-            int apothemata = scanner.nextInt();
-            if (apothemata >= 0) {
+            System.out.println("Πόσες μέρες λειτουργεί το κατάστημα;");
+            int operating_days = scanner.nextInt();
+            if (operating_days > 0) {
                 y = false;
-                MethodsDB.insertApantisi1intoDB(apothemata, username);
+                UseDB.insertIntoDBInt("operaring_days", operating_days, username);
+            } else {
+                System.out.println("Λάθος καταχώρηση, παρακαλώ προσπαθήστε ξανά");
             }
         }
     }
-    public static void question2(String username) {
+    public static void insertStore_Opening_Time(String username) {
         boolean y = true;
         while (y) {
-            System.out.println("Δώσε τιμές των προϊόντων");
-            double price = scanner.nextDouble();
-            if (price >= 0) {
+            System.out.println("Τι ώρα ανοίγει το κατάστημα");            
+            try {
+                String Store_Opening_Time = scanner.nextLine();
+                UseDB.insertIntoDBString("Store_Opening_Time", Store_Opening_Time, username);
                 y = false;
-                MethodsDB.insertApantisi2intoDB(price, username);
+            } catch (InputMismatchException e) {
+                System.out.println("Λάθος καταχώρηση, παρακαλώ προσπαθήστε ξανά");
             }
         }
     }
-    public static void question3(String username) {
-        System.out.println("Δώσε οικονομικά αποτελέσματα");
-        double financial = scanner.nextDouble();
-        MethodsDB.insertApantisi3intoDB(financial, username);
-        BarChartFX.main(null);
-        PieChartFX.main(null);
-        AreaChart.main(null);
-        LineChart.main(null);
+    public static void insertStore_Closing_Time(String username) {
+        boolean y = true;
+        while (y) {
+            System.out.println("Τι ώρα κλείνει το κατάστημα");            
+            try {
+                String Store_Closing_Time = scanner.nextLine();
+                UseDB.insertIntoDBString("Store_Closing_Time", Store_Closing_Time, username);
+                y = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Λάθος καταχώρηση, παρακαλώ προσπαθήστε ξανά");
+            }
+        }
     }
+    public static void epilogesDiadikasia(int answer) {
+        // kalei tis katalhlles methodous gia thn leitourgia pou epeleje o xrhsths
+    }
+
+
+
+
+
+
+
     public static void newuser(String username, String password) {
         UseDB.syndeshxrhsthprotifora(username);
-        UseDB.createTableBD(username, password);
-    }
+        UseDB.createTableDB(username, password);
+    } 
+        
 }
