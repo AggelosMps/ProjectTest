@@ -9,10 +9,9 @@ public class Options {
             System.out.println("Login successful!");
             if (UseDB.checkfores(username) == 0) {
                 UseDB.elegxossyndesis(username);
-                MethodsUser.question1(username);
-                MethodsUser.question2(username);
-                MethodsUser.question3(username);
-            } 
+                MethodsUser.insertdata(username);
+            }
+            
         } else {
             System.out.println("Login failed.Incorrect username or password.");
         }
