@@ -42,6 +42,12 @@ public class ApiRequest {
         String response =  chatGptConnection(systemMessage, userMessage);
         return response;
     }
+    public static String getCategorization() {
+        String systemMessage = "You are a supermarket application that will help in extracting financial information. You will receive in the format: product name, sales_profit and you will return in the same format product category, total sales profit of category";
+        String userMessage = Data.getCategorization();
+        String response =  chatGptConnection(systemMessage, userMessage);
+        return response;
+    }
 
     //Κόβει το String της απάντησης του Chat Gpt, (χρειάζαι και dependency στο maven)
         public static String extractContent(String jsonString) {
