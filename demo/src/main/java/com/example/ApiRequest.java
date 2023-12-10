@@ -4,16 +4,24 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
+import javax.xml.crypto.Data;
+
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+//Για να το καλέσεις απο την main
+//System.out.println(ApiRequest.extractContent(ApiRequest.getPrice()));
+//System.out.println(ApiRequest.extractContent(ApiRequest.getApothema()));
 
 
 public class ApiRequest {
     
     public static String getApothema() {
         String systemMessage = "You are a manager in a supermarket. I will give you a product name, quantity of the product now, quantity of the product yesterday, and quantity of the product the day before yesterday. How much product should I buy. Calculate the product using the supply and demand product and display it in the exact form using 2 tokens. Name of the product, quantity I should buy.";
+        //User Message: τα αποθέματα που θα παίρνει απο τους πίνακες
         String userMessage = Data.getApothemata();
         String response =  chatGptConnection(systemMessage, userMessage);
         return response;
@@ -21,6 +29,7 @@ public class ApiRequest {
 
     public static String getPrice() {
         String systemMessage = "You are a manager in a supermarket. I will give you a product name, selling price, purchase cost, quantity of the product now, quantity of the product yesterday, and quantity of the product the day before yesterday. Give me a new selling price. Calculate the price using the supply and demand, the  category of the product, the difference between the selling price and the purchase costand display it in the exact form using 2 tokens. Name of the product, new price.";
+        //User Message: τα αποθέματα που θα παίρνει απο τους πίνακες
         String userMessage = Data.getPrice();
         String response =  chatGptConnection(systemMessage, userMessage);
         return response;
@@ -39,7 +48,7 @@ public class ApiRequest {
 
     //To request στο chatgpt 
     public static String chatGptConnection(String systemMessage, String userMessage) {
-        String apiKey = ApiKey.getApiKey();
+        String apiKey = getApi();
         // Replace the URL with the correct OpenAI API endpoint
         String apiUrl = "https://api.openai.com/v1/chat/completions";
         // Replace with your model name
@@ -83,6 +92,7 @@ public class ApiRequest {
         return contentBuilder.toString();
     }
 
+    //Το apiKey αποθηκευμένο σε txt file
     public static String getApi() {
         try {
             String content = readFile("filepath");
