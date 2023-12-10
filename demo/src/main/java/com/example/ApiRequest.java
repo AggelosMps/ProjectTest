@@ -35,6 +35,13 @@ public class ApiRequest {
         return response;
     }
 
+    public static String getSchedule() {
+        //String systemMessage = "The application involves creating a schedule for a supermarket. I will provide you with the operating days and hours of the store in the format <Day>, <store opening time>, <store closing time>, and Staff with the hours they can work in the format <employee name>, <Day they can work>, <hours they can work for that day>. Each store must have exactly 2 employees at the same time, each employee can work up to 8 hours a day. I want the results in the following format: <Day>, <employee name>, <start time of their schedule>, <end time of their schedule>, without any other comment";
+        String systemMessage = "The application involves creating a schedule for a supermarket. I will provide you with the operating days and hours of the store in the format Day, store opening time, store closing time, and Staff with the hours they can work in the format employee name, Day they can work, hours they can work for that day. Each store must have exactly 2 employees at the same time, each employee can work up to 8 hours a day. Display it in the exact form using 2 tokens. <Day>, <employee name>, <start time of their schedule>, <end time of their schedule>";
+        String userMessage = Data.getSchedule();
+        String response =  chatGptConnection(systemMessage, userMessage);
+        return response;
+    }
 
     //Κόβει το String της απάντησης του Chat Gpt, (χρειάζαι και dependency στο maven)
         public static String extractContent(String jsonString) {
