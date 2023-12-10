@@ -1,7 +1,7 @@
 package com.example;
 import java.sql.*;
 
-public class DataBase {
+public class DataBase { 
     public static Connection connection = null;
     public static Number selectFromTable(String username, String apantisi) {
         try {
