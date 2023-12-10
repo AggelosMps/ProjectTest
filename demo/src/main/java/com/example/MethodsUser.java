@@ -74,6 +74,9 @@ public class MethodsUser {
         while (y) {
             System.out.println("Τι ώρα ανοίγει το κατάστημα");            
             try {
+                if (scanner.hasNext()) {
+                    scanner.nextLine();// clear the input buffer
+                }
                 String Store_Opening_Time = scanner.nextLine();
                 UseDB.insertIntoDBString("Store_Opening_Time", Store_Opening_Time, username);
                 y = false;
